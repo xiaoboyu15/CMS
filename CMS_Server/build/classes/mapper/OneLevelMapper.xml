@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD 
+ Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace实际上接口的名字 -->
+<mapper namespace="mapper.ReporterMapper">
+	<select id="getAllOne" resultType="OneLevel">
+		select * from onelevel
+	</select>
+	<insert id="insertOne" parameterType="OneLevel">
+		insert into 
+			onelevel
+			values(
+			#{oneLevelID},#{oneLevelName},#{twoLevelID}
+			)
+	</insert>
+</mapper>
