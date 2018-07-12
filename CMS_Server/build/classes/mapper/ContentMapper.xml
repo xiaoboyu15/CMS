@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD 
+ Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace实际上接口的名字 -->
+<mapper namespace="mapper.ContentMapper">
+
+	<select id="getConByTwo" resultType="Content">
+		select * from content
+		where twoLevelID=#{twoLevelID}
+	</select>
+	<select id="getConByID" resultType="Content">
+		select * from content
+		where conID=#{conID}
+	</select>
+	
+	<insert id="insertCon" parameterType="Content">
+		insert into 
+			content
+			values (
+			#{conID},#{title},#{tags},#{source},#{author},#{editor},#{richText},#{keywords},,#{time},#{annex},#{top},#{twoLevelID}
+			)
+	</insert>
+	
+	<delete id="deleteCon">
+		delete from content where
+		conID=#{conID}
+	</delete>
+	<delete id="deleteConByTwo">
+		delete from content where
+		twoLevelID=#{twoLevelID}
+	</delete>
+	
+	<update id="updateCon" parameterType="Content">
+		update content
+		set
+		title=#{title},tags=#{tags},source=#{source},author=#{author},editor=#{editor},richText=#{richText},keywords=#{keywords},,time=#{time},annex=#{annex},top=#{top},twoLevelID=#{twoLevelID}
+		where conID=#{conID}
+	</update>
+	
+	<update id="updateConWithClick" parameterType="Content">
+		update content
+		set
+		clicks=#{clicks}
+		where conID=#{conID}
+	</update>
+</mapper>

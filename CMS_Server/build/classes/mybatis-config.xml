@@ -9,11 +9,17 @@
 		<typeAlias type="entity.Reporter" alias="Reporter" />
 		<typeAlias type="entity.Admin" alias="Admin" />
 		<typeAlias type="entity.OneLevel" alias="OneLevel" />
+		<typeAlias type="entity.TwoLevel" alias="TwoLevel" />
+		<typeAlias type="entity.Content" alias="Content" />
+		<typeAlias type="entity.Media" alias="Media" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mapper/UserMapper.xml" />
 		<mapper resource="mapper/ReporterMapper.xml" />
 		<mapper resource="mapper/AdminMapper.xml" />
 		<mapper resource="mapper/OneLevelMapper.xml" />
+		<mapper resource="mapper/TwoLevelMapper.xml" />
+		<mapper resource="mapper/ContentMapper.xml" />
+		<mapper resource="mapper/MediaMapper.xml" />
 	</mappers>
 </configuration>

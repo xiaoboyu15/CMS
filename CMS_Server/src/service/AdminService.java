@@ -12,7 +12,8 @@ import mapper.AdminMapper;
 public class AdminService {
 	@Autowired
 	private AdminMapper adminMapper;
-	public List<Admin> loginInAdmin(){
+
+	public List<Admin> loginInAdmin() {
 		return adminMapper.loginInAdmin();
 	}
 }

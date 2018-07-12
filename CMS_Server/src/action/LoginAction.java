@@ -8,7 +8,10 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import entity.Admin;
@@ -22,53 +25,64 @@ import service.UserService;
 public class LoginAction {
 	@Autowired
 	private UserService userService;
-	
+
 	@Autowired
 	private ReporterService reporterService;
-	
+
 	@Autowired
 	private AdminService adminService;
-	
-	//µÇÂ¼ÑéÖ¤Âß¼­
+
+	// ç™»å½•åˆ¤æ–­ï¼Œæµ‹è¯•å®Œæˆ
 	@RequestMapping("/loginIn")
-	public ModelAndView loginIn(String username,String userpassword,HttpSession session,String select) {
-		System.out.println(username);
-		System.out.println("111");
-		//String message="ÕËºÅ»òÃÜÂë´íÎó£¬ÇëÖØÊÔ£¡";
-		Map<String,Object> model = new HashMap<String,Object>();
-		if(select.equals("¹ÜÀíÔ±")) {
-			List<Admin> admins=adminService.loginInAdmin();
-			for(int i=0;i<admins.size();i++) {
-				if(username.equals(admins.get(i).getAdminName())&&userpassword.equals(admins.get(i).getAdminPassword())) {
+	public ModelAndView loginIn(String username, String userpassword, HttpSession session, String select) {
+		Map<String, Object> model = new HashMap<String, Object>();
+		if (select.equals("ç®¡ç†å‘˜")) {
+			List<Admin> admins = adminService.loginInAdmin();
+			for (int i = 0; i < admins.size(); i++) {
+				if (username.equals(admins.get(i).getAdminName())
+						&& userpassword.equals(admins.get(i).getAdminPassword())) {
 					session.setAttribute("username", username);
-					return new ModelAndView("adminView",model);
+					session.setAttribute("Permission", "admin");
+					return new ModelAndView("adminView", model);
 				}
 			}
-		}
-		else if(select.equals("ĞÅÏ¢Â¼ÈëÔ±")) {
-			List<Reporter> reporters=reporterService.loginInReporter();
-			for(int i=0;i<reporters.size();i++) {
-				if(username.equals(reporters.get(i).getReporterName())&&userpassword.equals(reporters.get(i).getReporterPassword())) {
+		} else if (select.equals("ä¿¡æ¯å½•å…¥å‘˜")) {
+			List<Reporter> reporters = reporterService.loginInReporter();
+			for (int i = 0; i < reporters.size(); i++) {
+				if (username.equals(reporters.get(i).getReporterName())
+						&& userpassword.equals(reporters.get(i).getReporterPassword())) {
 					session.setAttribute("username", username);
-					return new ModelAndView("home",model);
+					session.setAttribute("Permission", "reporter");
+					return new ModelAndView("home", model);
 				}
 			}
-		}
-		else if(select.equals("ÓÃ»§")) {
-			List<User> users=userService.loginInUser();
-			for(int i=0;i<users.size();i++) {
-				if(username.equals(users.get(i).getUserName())&&userpassword.equals(users.get(i).getUserPassword())) {
+		} else if (select.equals("ç”¨æˆ·")) {
+			List<User> users = userService.loginInUser();
+			for (int i = 0; i < users.size(); i++) {
+				if (username.equals(users.get(i).getUserName())
+						&& userpassword.equals(users.get(i).getUserPassword())) {
 					session.setAttribute("username", username);
-					System.out.println("111");
-					return new ModelAndView("home",model);
+					session.setAttribute("Permission", "user");
+					return new ModelAndView("home", model);
 				}
 			}
-			
+
 		}
-		else{
-			
-		}
-		
-		return new ModelAndView("login");
+		model.put("error", "è¯·é€‰æ‹©ç™»å½•æƒé™");
+		return new ModelAndView("login", model);
 	}
+
+	@RequestMapping(value="/doLogin",method=RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> getTeacher(@PathVariable("username") String username, @PathVariable("password") String password){ 
+		Map<String, Object> map = new HashMap<String, Object>();
+		System.out.println("æ‹¦æˆªäº†å®¢æˆ·ç«¯jsonè¯·æ±‚");
+		System.out.println(username);
+		System.out.println(password);
+		return null;
+	}
+		
+	
+	
+	
 }

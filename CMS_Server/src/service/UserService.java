@@ -12,10 +12,11 @@ import mapper.UserMapper;
 public class UserService {
 	@Autowired
 	private UserMapper userMapper;
-	
-	public List<User> loginInUser(){
+
+	public List<User> loginInUser() {
 		return userMapper.loginInUser();
 	}
+
 	public boolean registered(User user) {
 		return userMapper.registered(user);
 	}

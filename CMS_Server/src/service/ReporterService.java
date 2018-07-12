@@ -12,8 +12,8 @@ import mapper.ReporterMapper;
 public class ReporterService {
 	@Autowired
 	private ReporterMapper reporterMapper;
-	
-	public List<Reporter> loginInReporter(){
+
+	public List<Reporter> loginInReporter() {
 		return reporterMapper.loginInReporter();
 	}
 }
