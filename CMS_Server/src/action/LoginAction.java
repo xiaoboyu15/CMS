@@ -8,10 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import entity.Admin;
@@ -31,6 +28,7 @@ public class LoginAction {
 
 	@Autowired
 	private AdminService adminService;
+	
 
 	// 登录判断，测试完成
 	@RequestMapping("/loginIn")
@@ -72,16 +70,16 @@ public class LoginAction {
 		return new ModelAndView("login", model);
 	}
 
-	@RequestMapping(value="/doLogin",method=RequestMethod.POST)
-	@ResponseBody
-	public Map<String, Object> getTeacher(@PathVariable("username") String username, @PathVariable("password") String password){ 
-		Map<String, Object> map = new HashMap<String, Object>();
-		System.out.println("拦截了客户端json请求");
-		System.out.println(username);
-		System.out.println(password);
-		return null;
-	}
+	@RequestMapping("testList")
+	public void testList(String text[]) {
+		for(int i=0;i<text.length;i++) {
+			System.out.println(text[i]);
+		}
 		
+//		Questionnaire questionnaire=new Questionnaire();
+//		questionnaire.setQuestionnaireName(text);
+//		questionnaireService.updateQuestionnaire(questionnaire);
+	}
 	
 	
 	

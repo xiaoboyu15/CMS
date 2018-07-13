@@ -28,5 +28,7 @@
     <input id="fileId" name="fileName" type="file"/>
     <input type="submit" value="提交"/>    
 </form>
+<a href="${pageContext.request.contextPath}/goToAdminHome.do"
+				target="view_frames">科室管理</a>
 </body>
 </html>

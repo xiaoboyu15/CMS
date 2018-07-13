@@ -1,11 +1,11 @@
 package action;
 
-import java.io.IOException;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,6 +27,11 @@ public class OneLevelAction {
 	@Autowired
 	private ContentService contentService;
 
+	
+	@RequestMapping("/goToAdminHome")
+	public ModelAndView goToAdminHome() {
+		return new ModelAndView("adminHome");
+	}
 	// 获取所有的一级栏目,测试通过
 	@RequestMapping("/getAllOne")
 	public ModelAndView getAllOne() {
