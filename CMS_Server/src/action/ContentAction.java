@@ -53,7 +53,7 @@ public class ContentAction {
 
 	// 插入文章 !!!待测试，原因：测试场景不符!!!
 	@RequestMapping("/insertCon")
-	public ModelAndView insertCon(HttpSession session,String title, String tags, String source, String author, String editor,
+	public ModelAndView insertCon(HttpSession session,String txtInput,String title, String tags, String source, String author, String editor,
 			String richText, String keywords, String top, String twoLevelName, HttpServletRequest request)
 			throws IllegalStateException, IOException {
 		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
@@ -84,6 +84,7 @@ public class ContentAction {
 			content.setAuthor(author);
 			content.setEditor((String)session.getAttribute("username"));
 			content.setRichText(richText);
+			content.setOnlyText(txtInput);
 			content.setKeywords(keywords);
 			content.setAnnex(annex);
 			content.setTop(top);

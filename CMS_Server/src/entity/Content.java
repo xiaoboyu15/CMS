@@ -14,6 +14,15 @@ public class Content {
 	private String top;
 	private int twoLevelID;
 	private String time;
+	private String onlyText;
+	public String getOnlyText() {
+		return onlyText;
+	}
+
+	public void setOnlyText(String onlyText) {
+		this.onlyText = onlyText;
+	}
+
 	public String getTime() {
 		return time;
 	}

@@ -18,9 +18,9 @@
 	</select>
 	
 	<insert id="insertCon" parameterType="Content">
-		insert into content(conID,title,tags,source,author,editor,richText,keywords,time,annex,top,twoLevelID)
+		insert into content(conID,title,tags,source,author,editor,richText,onlyText,keywords,time,annex,top,twoLevelID)
 			values (
-			#{conID},#{title},#{tags},#{source},#{author},#{editor},#{richText},#{keywords},#{time},#{annex},#{top},#{twoLevelID}
+			#{conID},#{title},#{tags},#{source},#{author},#{editor},#{richText},#{onlyText},#{keywords},#{time},#{annex},#{top},#{twoLevelID}
 			)
 	</insert>
 	

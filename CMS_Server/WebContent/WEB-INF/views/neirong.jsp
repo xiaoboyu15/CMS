@@ -162,9 +162,16 @@ body {
 						</table>
 
 					</div>
+					<script type="text/javascript">
+						function test(){
+							console.log(UE.getEditor('editor').getContentTxt())
+							var txtInput=document.getElementById("txtInput")
+							txtInput.value=UE.getEditor('editor').getContentTxt()
+						}
+					</script>
 					<div class="tab-pane" id="one">
 						<form action="${pageContext.request.contextPath}/insertCon.do"
-							encType="multipart/form-data" method="post">
+							encType="multipart/form-data" method="post" onsubmit="return test()">
 							<p style="color: red">*标题</p>
 							<input type="text" class="form-control" name="title"
 								placeholder="请输入您的标题">
@@ -195,12 +202,12 @@ body {
 								</c:forEach>
 							</select>
 							<p>内容</p>
-							<div id="editor" style="height: 360px" name="richText">
+							<div id="editor" style="height: 360px" name="richText" >
 								<script type="text/javascript" charset="utf-8">
 									var ue=UE.getEditor('editor');
-									
 								</script>
 							</div>
+							<textarea id="txtInput" name="txtInput" hidden="hidden" ></textarea>
 							<div style="float: left">
 								<input type="file" name="fileName" multiple>
 							</div>
