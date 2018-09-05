@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 在映射文件件中可以直接使用Course表示entity.Course -->
+	<typeAliases>
+		<typeAlias type="entity.User" alias="User" />
+		<typeAlias type="entity.Reporter" alias="Reporter" />
+		<typeAlias type="entity.Administrator" alias="Administrator" />
+		<typeAlias type="entity.OneLevel" alias="OneLevel" />
+		<typeAlias type="entity.TwoLevel" alias="TwoLevel" />
+		<typeAlias type="entity.Content" alias="Content" />
+		<typeAlias type="entity.Media" alias="Media" />
+		<typeAlias type="entity.Questionnaire" alias="Questionnaire" />
+		<typeAlias type="entity.LoginWater" alias="LoginWater" />
+		<typeAlias type="entity.Application" alias="Application" />
+		<typeAlias type="entity.Question" alias="Question" />
+		<typeAlias type="entity.Answer" alias="Answer" />
+		<typeAlias type="entity.QA" alias="QA" />
+	</typeAliases>
+	<mappers>
+		<mapper resource="mapper/UserMapper.xml" />
+		<mapper resource="mapper/ReporterMapper.xml" />
+		<mapper resource="mapper/AdministratorMapper.xml" />
+		<mapper resource="mapper/OneLevelMapper.xml" />
+		<mapper resource="mapper/TwoLevelMapper.xml" />
+		<mapper resource="mapper/ContentMapper.xml" />
+		<mapper resource="mapper/MediaMapper.xml" />
+		<mapper resource="mapper/QuestionnaireMapper.xml" />
+		<mapper resource="mapper/LoginWaterMapper.xml" />
+		<mapper resource="mapper/ApplicationMapper.xml" />
+		<mapper resource="mapper/QuestionMapper.xml" />
+		<mapper resource="mapper/AnswerMapper.xml" />
+		<mapper resource="mapper/QAMapper.xml" />
+	</mappers>
+</configuration>

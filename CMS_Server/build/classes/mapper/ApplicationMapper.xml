@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD 
+ Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace实际上接口的名字 -->
+<mapper namespace="mapper.ApplicationMapper">
+	<select id="getAllApplication" resultType="Application">
+		select * from application
+	</select>
+	<select id="getApplicationByID" resultType="Application">
+		select * from application
+			where applicationID=#{applicationID}
+	</select>
+	<insert id="insertApplication" parameterType="Application">
+		insert into application
+			values (
+			#{applicationID},#{applicationName},#{nowPower},#{applicationPower},#{why},#{applicationDate},#{applicationState}
+			)
+	</insert>
+	
+	
+	<update id="changeState" parameterType="Application">
+		update application
+		set
+		applicationState=#{applicationState}
+		where applicationID=#{applicationID}
+	</update>
+	
+	
+</mapper>

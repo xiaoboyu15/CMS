@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD 
+ Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace实际上接口的名字 -->
+<mapper namespace="mapper.QAMapper">
+
+	<select id="getAllQA" resultType="QA">
+		select * from qa
+	</select>
+	<select id="getAllQAByUserID" resultType="QA">
+		select * from qa
+			where UserID=#{UserID}
+	</select>
+	
+	<insert id="insertQuestion" parameterType="QA">
+		insert into 
+			qa
+			values (
+			#{QAPersonID},#{QAPersonName},#{QAName},#{UserID}
+			)
+	</insert>
+
+</mapper>

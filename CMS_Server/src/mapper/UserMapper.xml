@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD 
+ Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace实际上接口的名字 -->
+<mapper namespace="mapper.UserMapper">
+	<select id="loginInUser" resultType="User">
+		select * from user
+	</select>
+	<select id="getUserByName" resultType="User">
+		select * from user
+			where userName=#{userName}
+	</select>
+	<insert id="registered" parameterType="User">
+		insert into
+		user
+		values (
+		#{userID},#{userName},#{userPassword},#{userPhone},#{userAddress},#{userEmail} )
+	</insert>
+	<delete id="deleteUser">
+		delete from user where
+		userName=#{userName}
+	</delete>
+</mapper>

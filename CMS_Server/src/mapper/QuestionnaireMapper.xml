@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD 
+ Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace实际上接口的名字 -->
+<mapper namespace="mapper.QuestionnaireMapper">
+
+	<select id="getQuestionnaireByID" resultType="Questionnaire">
+		select * from questionnaire
+		where questionnaireID=#{questionnaireID}
+	</select>
+	
+	<select id="getAllQuestionnaire" resultType="Questionnaire">
+		select * from questionnaire
+	</select>
+	<select id="getQuestionnaireByName" resultType="Questionnaire">
+		select * from questionnaire
+			where questionnaireName=#{questionnaireName}
+	</select>
+	
+	<insert id="insertQuestionnaire" parameterType="Questionnaire">
+		insert into 
+			questionnaire
+			values (
+			#{questionnaireID},#{questionnaireName}
+			)
+	</insert>
+	
+	<delete id="deleteQuestionnaire">
+		delete from questionnaire where
+		questionnaireID=#{questionnaireID}
+	</delete>
+	
+	<update id="updateQuestionnaire" parameterType="Questionnaire">
+		update questionnaire set
+			questionnaireName=#{questionnaireName}
+			where questionnaireID=#{questionnaireID}
+	</update>
+
+</mapper>

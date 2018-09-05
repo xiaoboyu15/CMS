@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD 
+ Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace实际上接口的名字 -->
+<mapper namespace="mapper.AnswerMapper">
+
+	<select id="getAllAnswer" resultType="Answer">
+		select * from answer
+	</select>
+	<select id="getAllAnswerByQuestionID" resultType="Answer">
+		select * from answer
+			where questionID=#{questionID}
+	</select>
+	
+	<insert id="insertAnswer" parameterType="Answer">
+		insert into 
+			answer
+			values (
+			#{answerID},#{questionID},#{answerName},#{answerTicket}
+			)
+	</insert>
+	
+	<delete id="deleteAnswerByQuestionID">
+		delete from answer where
+		questionID=#{questionID}
+	</delete>
+</mapper>

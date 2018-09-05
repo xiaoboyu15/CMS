@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD 
+ Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace实际上接口的名字 -->
+<mapper namespace="mapper.OneLevelMapper">
+	<select id="getAllOne" resultType="OneLevel">
+		select * from onelevel
+	</select>
+	<select id="getOnlyOne" resultType="OneLevel">
+		select * from onelevel
+		where oneLevelName=#{oneLevelName}
+	</select>
+	<select id="getOneByID" resultType="OneLevel">
+		select * from onelevel
+		where oneLevelID=#{oneLevelID}
+	</select>
+	<insert id="insertOne" parameterType="OneLevel">
+		insert into 
+			onelevel
+			values (
+			#{oneLevelID},#{oneLevelName}
+			)
+	</insert>
+	<delete id="deleteOne">
+		delete from onelevel where
+		oneLevelName=#{oneLevelName}
+	</delete>
+	
+	<update id="updateOne" parameterType="OneLevel">
+		update onelevel
+		set
+		oneLevelName=#{oneLevelName}
+		where oneLevelID=#{oneLevelID}
+	</update>
+</mapper>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD 
+ Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace实际上接口的名字 -->
+<mapper namespace="mapper.QuestionMapper">
+
+	<select id="getAllQuestion" resultType="Question">
+		select * from question
+	</select>
+	<select id="getAllQuestionByNaireID" resultType="Question">
+		select * from question
+			where questionnaireID=#{questionnaireID}
+	</select>
+	
+	<insert id="insertQuestion" parameterType="Question">
+		insert into 
+			question
+			values (
+			#{questionID},#{questionName},#{questionnaireID}
+			)
+	</insert>
+	
+	<delete id="deleteQuestionByNaireID">
+		delete from question where
+		questionnaireID=#{questionnaireID}
+	</delete>
+</mapper>

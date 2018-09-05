@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD 
+ Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace实际上接口的名字 -->
+<mapper namespace="mapper.MediaMapper">
+
+	<select id="getMediaByID" resultType="Media">
+		select * from media
+		where mediaID=#{mediaID}
+	</select>
+	<select id="getAllMedia" resultType="Media">
+		select * from media
+	</select>
+	<select id="getMediaByPath" resultType="Media">
+		select * from media
+		 where path=#{path}
+	</select>
+	<insert id="insertMedia" parameterType="Media">
+		insert into 
+			media
+			values (
+			#{mediaID},#{path},#{realPath}
+			)
+	</insert>
+	
+	<delete id="deleteMedia">
+		delete from media where
+		mediaID=#{mediaID}
+	</delete>
+	
+	<update id="updateMedia" parameterType="Media">
+		update media
+		set
+		path=#{path},realPath=#{realPath}
+		where mediaID=#{mediaID}
+	</update>
+	
+</mapper>

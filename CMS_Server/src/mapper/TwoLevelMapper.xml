@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD 
+ Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace实际上接口的名字 -->
+<mapper namespace="mapper.TwoLevelMapper">
+
+	<select id="getTwoByOne" resultType="TwoLevel">
+		select * from twolevel
+		where oneLevelID=#{oneLevelID}
+	</select>
+	<select id="getAllTwo" resultType="TwoLevel">
+		select * from twolevel
+	</select>
+	<select id="getOnlyTwo" resultType="TwoLevel">
+		select * from twolevel
+		where twoLevelName=#{twoLevelName}
+	</select>
+	<insert id="insertTwo" parameterType="TwoLevel">
+		insert into 
+			twolevel
+			values (
+			#{twoLevelID},#{twoLevelName},#{oneLevelID}
+			)
+	</insert>
+	
+	<delete id="deleteTwo">
+		delete from twolevel where
+		twoLevelName=#{twoLevelName}
+	</delete>
+	<delete id="deleteTwoByOne">
+		delete from twolevel where
+		oneLevelID=#{oneLevelID}
+	</delete>
+	
+	<update id="updateTwo" parameterType="TwoLevel">
+		update twolevel
+		set
+		twoLevelName=#{twoLevelName}
+		where twoLevelID=#{twoLevelID}
+	</update>
+</mapper>
