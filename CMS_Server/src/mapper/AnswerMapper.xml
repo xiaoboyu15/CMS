@@ -20,6 +20,12 @@
 			#{answerID},#{questionID},#{answerName},#{answerTicket}
 			)
 	</insert>
+	<update id="updateAnswer" parameterType="Answer">
+		update answer
+		set
+		answerTicket=answerTicket+1
+		where answerID=#{answerID}
+	</update>
 	
 	<delete id="deleteAnswerByQuestionID">
 		delete from answer where

@@ -1,9 +1,18 @@
 package entity;
 
+import java.util.List;
+
 public class Question {
 	private int questionID;
 	private String questionName;
 	private int questionnaireID;
+	private List<Answer> answers;
+	public List<Answer> getAnswers() {
+		return answers;
+	}
+	public void setAnswers(List<Answer> answers) {
+		this.answers = answers;
+	}
 	public int getQuestionID() {
 		return questionID;
 	}

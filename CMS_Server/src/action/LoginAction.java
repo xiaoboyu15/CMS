@@ -20,6 +20,7 @@ import entity.Content;
 import entity.LoginWater;
 import entity.Media;
 import entity.OneLevel;
+import entity.Questionnaire;
 import entity.Reporter;
 import entity.TwoLevel;
 import entity.User;
@@ -204,11 +205,6 @@ public class LoginAction {
 		return new ModelAndView("neirong", model);
 	}
 
-	@RequestMapping("goToShezhi")
-	public ModelAndView goToShezhi() {
-		return new ModelAndView("shezhi");
-	}
-
 	@RequestMapping("goToXitong")
 	public ModelAndView goToXitong() {
 		return new ModelAndView("xitong");
@@ -217,12 +213,6 @@ public class LoginAction {
 	public ModelAndView goToUserXitong() {
 		return new ModelAndView("userXitong");
 	}
-
-	@RequestMapping("goToQuestionnaire")
-	public ModelAndView goToBiaodan() {
-		return new ModelAndView("questionnaire");
-	}
-
 	@RequestMapping("goToHome")
 	public ModelAndView goToHome() {
 		return new ModelAndView("home");

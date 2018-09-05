@@ -1,5 +1,6 @@
 package action;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import entity.Answer;
+import entity.QA;
 import entity.Question;
 import entity.Questionnaire;
 import service.AnswerService;
+import service.QAService;
 import service.QuestionService;
 import service.QuestionnaireService;
 
@@ -26,6 +29,8 @@ public class QuestionnaireAction {
 	private QuestionService questionService;
 	@Autowired
 	private AnswerService answerService;
+	@Autowired
+	private QAService qaService;
 	
 	@RequestMapping("/getAllQuestionnaire")
 	public ModelAndView getAllQuestionnaire() {
@@ -125,7 +130,7 @@ public class QuestionnaireAction {
 			}
 			begin=begin+answerNameLength[i];
 		}
-		return new ModelAndView("");
+		return new ModelAndView("questionnaire");
 	}
 	
 	@RequestMapping("/testInsertQuestionnaire")
@@ -150,4 +155,78 @@ public class QuestionnaireAction {
 		System.out.println(questionName[i]);
 		}
 	}
+	
+	@RequestMapping("/goToUserQuestionnaire")
+	public ModelAndView goToUserQuestionnaire() {
+		Map<String, Object> model = new HashMap<String, Object>();
+		List<Questionnaire> questionnaires =questionnaireService.getAllQuestionnaire();
+		model.put("questionnaires", questionnaires);
+		return new ModelAndView("userQuestionnaire",model);
+	}
+	@RequestMapping("/tianXieUserQuestionnaire")
+	public ModelAndView tianXieUserQuestionnaire(int questionnaireID) {
+		Map<String, Object> model = new HashMap<String, Object>();
+		Questionnaire questionnaire=questionnaireService.getQuestionnaireByID(questionnaireID);
+		List<Question> questions=questionService.getAllQuestionByNaireID(questionnaireID);
+		for(int i=0;i<questions.size();i++) {
+			List<Answer> answers = new ArrayList<>();
+			List<Answer> answers2 =answerService.getAllAnswerByQuestionID(questions.get(i).getQuestionID());
+			for(int j=0;j<answers2.size();j++) {
+				answers.add(answers2.get(j));
+			}
+			questions.get(i).setAnswers(answers);
+		}
+		model.put("questions", questions);
+		model.put("questionnaire", questionnaire);
+		return new ModelAndView("tianXieUserQuestionnaire",model);
+	}
+	@RequestMapping("/finishUserQuestionnaire")
+	public String finishUserQuestionnaire(HttpSession session,String []answerID,String questionnaireName) {
+		for(int i=0;i<answerID.length;i++) {
+			Answer answer=new Answer();
+			answer.setAnswerID(Integer.valueOf(answerID[i]));
+			answerService.updateAnswer(answer);
+		}
+		QA qa=new QA();
+		qa.setQAName(questionnaireName);
+		qa.setQAPersonName((String)session.getAttribute("username"));
+		qaService.insertQuestion(qa);
+		return "forward:/goToUserIndex.do";
+	}
+
+	@RequestMapping("goToQuestionnaire")
+	public ModelAndView goToQuestionnaire() {
+		return new ModelAndView("questionnaire");
+	}
+	@RequestMapping("goToQuestionnaireList")
+	public ModelAndView goToQuestionnaireList() {
+		Map<String, Object> model = new HashMap<String, Object>();
+		List<Questionnaire> questionnaires =questionnaireService.getAllQuestionnaire();
+		for(int i=0;i<questionnaires.size();i++) {
+			List<Question> questions=new ArrayList<>();
+			List<Question> questions2=questionService.getAllQuestionByNaireID(questionnaires.get(i).getQuestionnaireID());
+			for(int j=0;j<questions2.size();j++) {
+				questions.add(questions2.get(j));
+				List<Answer> answers=new ArrayList<>();
+				List<Answer>answers2 =answerService.getAllAnswerByQuestionID(questions2.get(j).getQuestionID());
+				for(int k=0;k<answers2.size();k++) {
+					answers.add(answers2.get(k));
+				}
+				questionnaires.get(i).setAnswers(answers);
+				questions.get(j).setAnswers(answers);
+			}
+			questionnaires.get(i).setQuestions(questions);
+		}
+		model.put("questionnaires", questionnaires);
+		return new ModelAndView("questionnaireList",model);
+	}
+	
+	@RequestMapping("goToTongji")
+	public ModelAndView goToTongji() {
+		Map<String, Object> model = new HashMap<String, Object>();
+		List<QA> qas =qaService.getAllQA();
+		model.put("qas", qas);
+		return new ModelAndView("tongji",model);
+	}
+	
 }

@@ -32,8 +32,8 @@
                     <li><a href="${pageContext.request.contextPath}/goToWo.do">我</a></li>
                     <li><a href="${pageContext.request.contextPath}/goToNeirong.do">内容</a></li>
                     <li><a href="${pageContext.request.contextPath}/goToMeitiku.do">媒体库</a></li>
-                    <li><a href="${pageContext.request.contextPath}/goToQuestionnaire.do">调查问卷</a></li>
-                    <li><a href="${pageContext.request.contextPath}/goToShezhi.do">设置</a></li>
+                    <li><a href="${pageContext.request.contextPath}/goToQuestionnaireList.do">调查问卷</a></li>
+                    <li><a href="${pageContext.request.contextPath}/goToTongji.do">问卷调查统计</a></li>
                     <li><a href="${pageContext.request.contextPath}/goToXitong.do">系统</a></li>
                     <li><a href="#">></a></li>
                 </ul>

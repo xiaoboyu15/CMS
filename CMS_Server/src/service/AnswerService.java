@@ -25,4 +25,7 @@ public class AnswerService {
 	public boolean deleteAnswerByQuestionID(int questionID) {
 		return answerMapper.deleteAnswerByQuestionID(questionID);
 	}
+	public boolean updateAnswer(Answer answer) {
+		return answerMapper.updateAnswer(answer);
+	}
 }

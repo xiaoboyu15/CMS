@@ -33,9 +33,13 @@
 									</c:forEach>
 								</ul></li>
 						</c:forEach>
+						<li class="dropdown" onclick="parent.location.href = '${pageContext.request.contextPath}/goToUserQuestionnaire.do'"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown" role="button" aria-haspopup="true"
+							aria-expanded="false">问卷调查 </a></li>
 						<li class="dropdown" onclick="parent.location.href = '${pageContext.request.contextPath}/goToUserXitong.do'"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown" role="button" aria-haspopup="true"
 							aria-expanded="false"> 系统 </a></li>
+						
 					</ul>
 				</div>
 			</div>

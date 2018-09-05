@@ -73,6 +73,15 @@
 		parent.location.href = "${pageContext.request.contextPath}/insertQuestionnaire.do?questionnaireName="+questionnaireName+"&questionName="+questionName+"&answerName="+answerName+"&answerNameLength="+answerNameLength;
 	}
 </script>
+<%@ include file="head.jsp"%>
+<style>
+        body{
+            padding-top:50px;
+            }
+        .starter{
+            padding: 40px 15px;
+            text-align: center;
+    </style>
 </head>
 <body>
 	<b>请输入问卷调查名字：</b>

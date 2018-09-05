@@ -8,16 +8,12 @@
 	<select id="getAllQA" resultType="QA">
 		select * from qa
 	</select>
-	<select id="getAllQAByUserID" resultType="QA">
-		select * from qa
-			where UserID=#{UserID}
-	</select>
 	
 	<insert id="insertQuestion" parameterType="QA">
 		insert into 
 			qa
 			values (
-			#{QAPersonID},#{QAPersonName},#{QAName},#{UserID}
+			#{QAPersonID},#{QAPersonName},#{QAName}
 			)
 	</insert>
 

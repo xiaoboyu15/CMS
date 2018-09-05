@@ -10,5 +10,5 @@ public interface AnswerMapper {
 	public List<Answer> getAllAnswerByQuestionID(int questionID);
 	public boolean insertAnswer(Answer answer);
 	public boolean deleteAnswerByQuestionID(int questionID);
-
+	public boolean updateAnswer(Answer answer);
 }

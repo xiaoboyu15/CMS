@@ -15,9 +15,7 @@ public class QAService {
 	public List<QA> getAllQA(){
 		return qaMapper.getAllQA();
 	}
-	public List<QA> getAllQAByUserID(int UserID){
-		return qaMapper.getAllQAByUserID(UserID);
-	}
+	
 	public boolean insertQuestion(QA qa) {
 		return qaMapper.insertQuestion(qa);
 	}
